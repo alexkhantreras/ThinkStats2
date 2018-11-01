@@ -34,7 +34,7 @@ class _Brewer(object):
 
     Shades of blue that look good in color and can be distinguished
     in grayscale (up to a point).
-    
+
     Borrowed from http://colorbrewer2.org/
     """
     color_iter = None
@@ -79,7 +79,7 @@ class _Brewer(object):
         """Initializes the color iterator with the given number of colors."""
         cls.color_iter = cls.ColorGenerator(num)
         fig = plt.gcf()
-        cls.current_figure = fig  
+        cls.current_figure = fig
 
     @classmethod
     def ClearIter(cls):
@@ -93,7 +93,7 @@ class _Brewer(object):
         fig = plt.gcf()
         if fig != cls.current_figure:
             cls.InitIter(num)
-            cls.current_figure = fig  
+            cls.current_figure = fig
 
         if cls.color_iter is None:
             cls.InitIter(num)
@@ -304,7 +304,7 @@ def Scatter(xs, ys=None, **options):
     ys: y values
     options: options passed to plt.scatter
     """
-    options = _Underride(options, color='blue', alpha=0.2, 
+    options = _Underride(options, color='blue', alpha=0.2,
                          s=30, edgecolors='none')
 
     if ys is None and isinstance(xs, pandas.Series):
@@ -344,7 +344,7 @@ def Pdfs(pdfs, **options):
 
     Options are passed along for all PDFs.  If you want different
     options for each pdf, make multiple calls to Pdf.
-    
+
     Args:
       pdfs: sequence of PDF objects
       options: keyword args passed to plt.plot
@@ -462,7 +462,7 @@ def Pmfs(pmfs, **options):
 
     Options are passed along for all PMFs.  If you want different
     options for each pmf, make multiple calls to Pmf.
-    
+
     Args:
       pmfs: sequence of PMF objects
       options: keyword args passed to plt.plot
@@ -503,7 +503,7 @@ def Cdf(cdf, complement=False, transform=None, **options):
 
     scale = dict(xscale='linear', yscale='linear')
 
-    for s in ['xscale', 'yscale']: 
+    for s in ['xscale', 'yscale']:
         if s in options:
             scale[s] = options.pop(s)
 
@@ -539,7 +539,7 @@ def Cdf(cdf, complement=False, transform=None, **options):
 
 def Cdfs(cdfs, complement=False, transform=None, **options):
     """Plots a sequence of CDFs.
-    
+
     cdfs: sequence of CDF objects
     complement: boolean, whether to plot the complementary CDF
     transform: string, one of 'exponential', 'pareto', 'weibull', 'gumbel'
@@ -551,7 +551,7 @@ def Cdfs(cdfs, complement=False, transform=None, **options):
 
 def Contour(obj, pcolor=False, contour=True, imshow=False, **options):
     """Makes a contour plot.
-    
+
     d: map from (x, y) to z, or object that provides GetDict
     pcolor: boolean, whether to make a pseudocolor plot
     contour: boolean, whether to make a contour plot
@@ -586,11 +586,11 @@ def Contour(obj, pcolor=False, contour=True, imshow=False, **options):
     if imshow:
         extent = xs[0], xs[-1], ys[0], ys[-1]
         plt.imshow(Z, extent=extent, **options)
-        
+
 
 def Pcolor(xs, ys, zs, pcolor=True, contour=False, **options):
     """Makes a pseudocolor plot.
-    
+
     xs:
     ys:
     zs:
@@ -613,7 +613,7 @@ def Pcolor(xs, ys, zs, pcolor=True, contour=False, **options):
     if contour:
         cs = plt.contour(X, Y, Z, **options)
         plt.clabel(cs, inline=1, fontsize=10)
-        
+
 
 def Text(x, y, s, **options):
     """Puts text in a figure.
